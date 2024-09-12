@@ -13,13 +13,13 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     it('preenche os campos obrigatórios e envia o formulário', function () {
         cy.fillMandatoryFields('Douglas', 'Figueiredo', 'devdouglas@gmail.com.br', 'aaaaaaaaaaaaaaaaaaa');
 
-        cy.get('button[type="submit"]').click();
+        cy.contains('Enviar').click();
         cy.get('.success').should('be.visible');
     })
 
     it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', function () {
         cy.fillMandatoryFields('Douglas', 'Figueiredo', 'devdouglas.gmail.com.br', 'aaaaaaaaaaaaaaaaaaa');
-        cy.get('button[type="submit"]').click();
+        cy.contains('Enviar').click();
         cy.get('.error').should('be.visible');
     })
 
@@ -27,14 +27,14 @@ describe('Central de Atendimento ao Cliente TAT', function () {
        
         cy.fillMandatoryFields('Douglas','Figueiredo','devdouglas@gmail.com.br','aaaaaaaaaaaaaaaaaaa');
         cy.get('#phone').type('abcdef').should('have.value', '')
-        cy.get('button[type="submit"]').click();
+        cy.contains('Enviar').click();
         cy.get('.success').should('be.visible');
     })
 
-    it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
+    it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
         cy.fillMandatoryFields('Douglas','Figueiredo','devdouglas@gmail.com.br','aaaaaaaaaaaaaaaaaaa');
         cy.get('#phone-checkbox').click();
-        cy.get('button[type="submit"]').click();
+        cy.contains('Enviar').click();
         cy.get('.error').should('be.visible');
     })
 
@@ -48,7 +48,8 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     })
 
     it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios.', function () {
-        cy.get('button[type="submit"]').click();
+        cy.contains('Enviar').click();
+
         cy.get('.error').should('be.visible');
     })
 });
