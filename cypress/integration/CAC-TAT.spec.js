@@ -24,15 +24,15 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     })
 
     it('Tentativa de digitar letras no campo telefone', function () {
-       
-        cy.fillMandatoryFields('Douglas','Figueiredo','devdouglas@gmail.com.br','aaaaaaaaaaaaaaaaaaa');
+
+        cy.fillMandatoryFields('Douglas', 'Figueiredo', 'devdouglas@gmail.com.br', 'aaaaaaaaaaaaaaaaaaa');
         cy.get('#phone').type('abcdef').should('have.value', '')
         cy.contains('Enviar').click();
         cy.get('.success').should('be.visible');
     })
 
-    it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
-        cy.fillMandatoryFields('Douglas','Figueiredo','devdouglas@gmail.com.br','aaaaaaaaaaaaaaaaaaa');
+    it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
+        cy.fillMandatoryFields('Douglas', 'Figueiredo', 'devdouglas@gmail.com.br', 'aaaaaaaaaaaaaaaaaaa');
         cy.get('#phone-checkbox').click();
         cy.contains('Enviar').click();
         cy.get('.error').should('be.visible');
@@ -51,5 +51,14 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.contains('Enviar').click();
 
         cy.get('.error').should('be.visible');
+    })
+
+    it.only('marca cada tipo de atendimento', function () {
+        cy.get('input[type="radio"]')
+            .should('have.length', 3)
+            .each(function ($radio) {
+                cy.wrap($radio).check()
+                cy.wrap($radio).should('be.checked')
+            })
     })
 });
