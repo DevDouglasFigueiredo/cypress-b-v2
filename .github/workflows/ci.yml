@@ -1,12 +1,5 @@
 name: End-to-end tests 🧪
-on:
-  push:
-    # Somente executar o workflow quando arquivos no diretório `src/` ou em outros locais importantes forem modificados
-    paths:
-      - 'src/**'          # Diretório da aplicação
-      - 'package.json'     # Arquivo de dependências
-      - 'package-lock.json' # Arquivo de dependências (caso o use)
-      - 'config/**'        # Caso tenha arquivos de configuração
+on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
@@ -17,3 +10,23 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
+
+# name: End-to-end tests 🧪   (para rodar a pipeline qdo as alterações forem na aplicação, arquivos de desenvolvimento dentro da pasta src)
+# on:
+#   push:
+#     # Somente executar o workflow quando arquivos no diretório `src/` ou em outros locais importantes forem modificados
+#     paths:
+#       - 'src/**'          # Diretório da aplicação
+#       - 'package.json'     # Arquivo de dependências
+#       - 'package-lock.json' # Arquivo de dependências (caso o use)
+#       - 'config/**'        # Caso tenha arquivos de configuração
+# jobs:
+#   cypress-run:
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       # Install NPM dependencies, cache them correctly
+#       # and run all Cypress tests
+#       - name: Cypress run
+#         uses: cypress-io/github-action@v5
