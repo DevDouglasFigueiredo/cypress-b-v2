@@ -77,7 +77,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         });
     });
 
-    it.only('seleciona um arquivo da pasta fixtures', function () {
+    it('seleciona um arquivo da pasta fixtures', function () {
         cy.get('#file-upload').should('have.not.value')
         .selectFile('cypress/fixtures/example.json')
         .should(function (input) {
@@ -85,7 +85,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         });
     });
 
-    it.only('seleciona um arquivo da pasta fixtures', function () {
+    it('seleciona um arquivo da pasta fixtures', function () {
         cy.get('#file-upload').should('have.not.value')
         .selectFile('cypress/fixtures/example.json', { action: "drag-drop" })
         .should(function (input) {
