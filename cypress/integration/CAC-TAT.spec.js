@@ -40,7 +40,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.get('input[name="firstName"]').type('Douglas').should('have.value', 'Douglas').clear().should('have.value', '');
         cy.get('input[name="lastName"]').type('Figueiredo').should('have.value', 'Figueiredo').clear().should('have.value', '');
         cy.get('#email').type('devdouglasfigueiredo@hotmail.com').should('have.value', 'devdouglasfigueiredo@hotmail.com').clear().should('have.value', '');
-        cy.get('#open-text-area').type('obrigado pelo atendimento, huheaaheuaheugheaughea', { delay: 0 }).should('have.value', 'obrigado pelo atendimento, huheaaheuaheugheaughea').clear().should('have.value', '');
+        cy.get('#open-text-area').type('obrigad pelo atendimento, huheaaheuaheugheaughea', { delay: 0 }).should('have.value', 'obrigado pelo atendimento, huheaaheuaheugheaughea').clear().should('have.value', '');
     });
 
     it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios.', function () {
