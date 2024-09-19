@@ -1,5 +1,12 @@
 name: End-to-end tests 🧪
-on: [push]
+on:
+  push:
+    # Somente executar o workflow quando arquivos no diretório `src/` ou em outros locais importantes forem modificados
+    paths:
+      - 'src/**'          # Diretório da aplicação
+      - 'package.json'     # Arquivo de dependências
+      - 'package-lock.json' # Arquivo de dependências (caso o use)
+      - 'config/**'        # Caso tenha arquivos de configuração
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
